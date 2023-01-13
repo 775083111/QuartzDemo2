@@ -39,7 +39,7 @@ namespace QuartzDemo
 
 
                 //第二个任务
-                string cronExpression2 = string.Format("*/{0} * * * * ?", 8);
+                string cronExpression2 = string.Format("0/{0} * * * * ?", 8);
                 IJobDetail monthTask2 = JobBuilder.Create<BJob>()
                         //   .WithIdentity("job2")
                         .Build();
