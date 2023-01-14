@@ -66,6 +66,10 @@ namespace QuartzDemo
                 await scheduler.ScheduleJob(monthTask3, trigger3);
                 #endregion
             });
+
+
+            SysCache.Instance.SetCache("abcd", 1234);
+
             Console.ReadKey();
         }
     }
@@ -79,6 +83,9 @@ namespace QuartzDemo
         {
             await Task.Run(() =>
             {
+
+                Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff") + " Cache " + SysCache.Instance.IsCacheKey("abcd") + "\r\n");
+
                 Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff") + "          ...AJob...\r\n");
             });
         }
@@ -94,7 +101,6 @@ namespace QuartzDemo
         {
             await Task.Run(() =>
             {
-
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff") + "                    ...BJob..\r\n");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -112,6 +118,7 @@ namespace QuartzDemo
             {
                 await Task.Run(() =>
                 {
+                    SysCache.Instance.Remove("abcd");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff") + "     ++++     ...CJob..\r\n");
                     Console.ForegroundColor = ConsoleColor.White;

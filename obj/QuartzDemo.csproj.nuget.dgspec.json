@@ -48,6 +48,10 @@
             "Quartz": {
               "target": "Package",
               "version": "[3.5.0, )"
+            },
+            "System.Runtime.Caching": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
